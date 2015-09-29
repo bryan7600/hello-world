@@ -13,22 +13,35 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends ActionBarActivity {
-
+    int numberOrdered = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    /**
+            }
+     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int numberOrdered = 3;
-        display(numberOrdered);
-        displayPrice(numberOrdered * 5);
+        String priceMessage="Total $" + (numberOrdered * 5) + "\nThank You!";
+        displayMessage(priceMessage);
     }
+    /**
+     * This method is called when the + button is clicked.
+     */
+    public void increment(View view) {
+        numberOrdered = numberOrdered + 1;
+        display(numberOrdered);
+    }
+    /**
+     * This method is called when the - button is clicked.
+     */
+    public void decrement(View view) {
 
+        numberOrdered = numberOrdered - 1;
+        display(numberOrdered);
+
+    }
     /**
      * This method displays the given quantity value on the screen.
      */
@@ -41,60 +54,80 @@ public class MainActivity extends ActionBarActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
-
+     /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
+    }
 }
 
 
 *//** XML file
-*<LinearLayout
-*    xmlns:android="http://schemas.android.com/apk/res/android"
-*    android:layout_width="match_parent"
-*    android:layout_height="match_parent"
-*    android:padding="16dp"
-*    android:orientation="vertical"
-*        >
-*
-*    <TextView
-*        android:layout_width="wrap_content"
-*        android:layout_height="wrap_content"
-*        android:text="Quantity"
-*        android:paddingBottom="8dp"
-*        android:paddingTop="8dp"
-*        />
-*
-*    <TextView
-*        android:id="@+id/quantity_text_view"
-*        android:layout_width="wrap_content"
-*        android:layout_height="wrap_content"
-*        android:textColor="#000000"
-*        android:textSize="16sp"
-*        android:paddingBottom="8dp"
-*        android:paddingTop="8dp"
-*        android:text="0" />
-*    <TextView
-*        android:layout_width="wrap_content"
-*        android:layout_height="wrap_content"
-*        android:text="Price"
-*        android:paddingBottom="8dp"
-*        android:paddingTop="8dp"
-*        />
-*
-*    <TextView
-*        android:id="@+id/price_text_view"
-*        android:layout_width="wrap_content"
-*        android:layout_height="wrap_content"
-*        android:textColor="#000000"
-*        android:textSize="16sp"
-*        android:paddingBottom="8dp"
-*        android:paddingTop="8dp"
-*        android:text="0" />
-*    <Button
-*        android:layout_width="wrap_content"
-*        android:layout_height="wrap_content"
-*        android:text="Order"
-*        android:paddingBottom="8dp"
-*        android:paddingTop="8dp"
-*        android:onClick="submitOrder"/>
-*
-*</LinearLayout>
-*/
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <Button
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="-"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:onClick="decrement"/>
+    <TextView
+        android:id="@+id/quantity_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:text="0" />
+    <Button
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="+"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:onClick="increment"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        />
+    <TextView
+        android:id="@+id/price_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="0" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:onClick="submitOrder"/>
+</LinearLayout>
