@@ -1,0 +1,46 @@
+//****************************************1) goto STRINGS.XML and make array
+// <string-array name="manHoles">   <!-- you don't have to name your array manHoles -->
+//        <item>A1</item>
+//        <item>A2</item>
+//</string-array>
+//***************************************2) Create Spinner in ACTIVIY XML
+//    <Spinner
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:id="@+id/spinner"         <!-- you don't have to name your spinner 'spinner' -->
+//        android:spinnerMode="dropdown"
+//        android:background="@android:drawable/btn_dropdown"
+//        android:entries="@array/manHoles"  <!-- you don't have to name your array manHoles -->
+//        android:layout_toStartOf="@+id/button"
+//        android:layout_alignEnd="@+id/button" />
+        
+
+
+//***************************************3)  add implements and click ALT + ENTER then OK
+public class BRHMALMT extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+  
+    Spinner spinner;  // add this def
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_brhmalmt);
+  // add these lines (you name R.id.spinner to match your XML)
+        spinner = (Spinner) findViewById(R.id.spinner);
+  //                                                                      manHoles is the name of MY ARRAY
+        ArrayAdapter adapter=ArrayAdapter.createFromResource(this,R.array.manHoles,android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+//************************************** it created this section when you pressed ALT+ENT on step 3
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+// the next (2) lines will popup the user's selection
+        TextView mytext = (TextView) view;
+        Toast.makeText(this,"You Selected MH " + mytext.getText(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+ 
