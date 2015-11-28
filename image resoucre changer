@@ -1,0 +1,10 @@
+// find and display corrcet plat
+
+// your ImageView is probably not named "conduitView"
+        ImageView conduView = (ImageView) findViewById(R.id.conduitView);
+// your image is probably not named "conduit1"        
+        String cond= "conduit1";
+// your activity probably is not named "brhmalmt"        
+        int condpage = getResources().getIdentifier("com.example.android.brhmalmt:drawable/" + cond, null, null);
+        conduView.setImageResource(condpage);
+        
