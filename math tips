@@ -1,4 +1,4 @@
-String bryans = "" + String.format( "%.2f",bryan) +"M";                                // reduce to 2 decimals
+String bryans = "" + String.format( "%.2f",bryan) +"M";                                // string showing up to 2 decimals
 Integer height = Integer.valueOf(attHeight.getText().toString()) ;                     // convert ExitText value to int
 if (height > 99) {height = 99;attHeight.setText("99");} if (height < 1){height = 1;attHeight.setText("1");};  // define range of good value
 Double stranddiamy = Double.valueOf(stranddiamz.getText().toString()) ;               // convert ExitText value to Double
