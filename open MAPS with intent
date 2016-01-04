@@ -1,0 +1,21 @@
+ public void mapIt(View view) {
+        String label = manName;
+        if (cord.equals("35203")){
+            Toast.makeText(this, "This ManHole has no GPS, yet.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String uriBegin = "geo:" + cord;
+        String query = cord + "(" + label + ")";
+        String encodedQuery = Uri.encode(query);
+        String uriString = uriBegin + "?q=" + encodedQuery + "&z=18";
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+        else {
+                       Toast.makeText(this, "No Maps APP found " , Toast.LENGTH_SHORT).show();
+        }
+        return;
+            }
